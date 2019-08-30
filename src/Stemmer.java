@@ -9,7 +9,7 @@ public class Stemmer {
 		Reader readerObject = new InputStreamReader(System.in);
 		BufferedReader bufferedReaderObj = new BufferedReader(readerObject);
 		String read = ReadBigString(bufferedReaderObj);
-		String line = Stemmer(read);
+		String line = stemIt(read);
 		System.out.println(line);
 		
 		
@@ -36,7 +36,7 @@ public class Stemmer {
 		return everything.toString();
 	}
 	
-	public static String Stemmer(String line)
+	public static String stemIt(String line)
 	{
 		line = line.replaceAll("\\p{P}", " ");//punc
 		line = line.replaceAll("\\s+", " ");

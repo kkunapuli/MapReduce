@@ -1,8 +1,4 @@
 import java.io.*;
-import java.util.*;
-//import java.lang.Integer;
-
-//import javax.lang.model.util.ElementScanner6;
 
 public class Splitter {
 
@@ -58,7 +54,6 @@ public class Splitter {
 
 		while((lineContents = buffReaderObj.readLine()) != null)
 		{
-			//System.out.println(lineContents);
 
 			numIterations += 1;
 
@@ -66,38 +61,15 @@ public class Splitter {
 			{
 
 				quarterContents = quarterContents + lineContents + "\n";
-				//System.out.println(numIterations);
 
 			}
-
-			
-			//System.out.println(quarterContents);
 		}
 
-		
 		System.out.println(quarterContents);
 		
-
-
-
-
-
-		// We then need to pipe the contents of the quarters
-
-		// TESTING PURPOSES
-
-		//System.out.println("File name: " + filename + "\n");
-
-		//System.out.println("Starting Line Number: " + startingLineNumber + "\n");
-
-		//System.out.println("Ending Line Number: " + endingLineNumber + "\n");
-
-		
-
-
+		//close buffered reader
+		buffReaderObj.close();
 
 	}
-
-
 
 }

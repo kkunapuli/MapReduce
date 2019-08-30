@@ -1,5 +1,4 @@
 import java.net.*;
-import java.util.*;
 import java.io.*;
 
 public class Sender {
@@ -9,14 +8,10 @@ public class Sender {
 	public static void main(String [] args) {
 		BufferedReader reader =  
 				new BufferedReader(new InputStreamReader(System.in)); 
-		String str = new String();
 		Sender s = new Sender();
-		String resp = new String();
-
 		try {
-			while((str = reader.readLine()) != null) {
+			while((reader.readLine()) != null) {
 				s.startConnection("127.0.0.1",778);
-				resp = s.sendMessage(str);
 				s.stopConnection();
 
 			}

@@ -133,8 +133,8 @@ public class Reducer{
 	//constructor
 	public Reducer(){
 		wordTable = new HashMap<String, ArrayList<Integer>>(100);
-		//cyclicBarrier = new CyclicBarrier(4,new AggregatorThread());
-		cyclicBarrier = new CyclicBarrier(1,new AggregatorThread());
+		cyclicBarrier = new CyclicBarrier(4,new AggregatorThread());
+		//cyclicBarrier = new CyclicBarrier(1,new AggregatorThread());
 
 	}
 	

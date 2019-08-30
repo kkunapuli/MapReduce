@@ -18,6 +18,11 @@ cmdSplit="java -classpath $cpath Splitter $filename $num_lines"
 cmdStem="java -classpath $cpath Stemmer"
 cmdMap="java -classpath $cpath Mapper"
 cmdSend="java -classpath $cpath Sender $redHost $redPort"
+cmdReduce="java -classpath $cpath Reducer"
+
+ # start reducer
+($cmdReduce > reduce_results.txt) &
+pid_red=$!
 
 #keep array of pids
 pid_arr=(0 0 0 0)
@@ -41,4 +46,7 @@ done
 for p in "${pid_arr[@]}"; do
 	wait $p
 done
+
+#stop reducer (there must be a better way ... )
+kill $pid_red
 

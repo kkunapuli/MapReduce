@@ -16,6 +16,7 @@ public class Mapper {
 	}
 
 
+	// print word + "1" for counting
 	public Mapper(String line)
 	{
 		String[] tokens = line.split(" ");
@@ -23,11 +24,11 @@ public class Mapper {
 		{
 			temp = temp.toLowerCase();
 			temp += " 1";
-			//System.out.print(temp);
 			stringList.add(temp);
 		}
 	}
 	
+	//print to stdout (one line); separate words by comma
 	public void print() {
 		for(String tmp: stringList) {
 			System.out.print(tmp + ",");

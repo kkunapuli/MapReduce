@@ -9,21 +9,14 @@ public class Stemmer {
 		Reader readerObject = new InputStreamReader(System.in);
 		BufferedReader bufferedReaderObj = new BufferedReader(readerObject);
 		String read = ReadBigString(bufferedReaderObj);
-		String line = stemIt(read);
+		String line = cleanit(read);
+		
+		//print cleaned string to stdout
 		System.out.println(line);
-		
-		
-		
-		/*String read;
-		while((read = bufferedReaderObj.readLine())!=null)
-		{
-			read = read.toLowerCase();
-			String line = Stemmer(read);
-	        System.out.println(line);
-		}*/
 		
 	}
 	
+	//reads strings with multiple new lines
 	public static String ReadBigString(BufferedReader buffIn) throws IOException
 	{
 		StringBuilder everything = new StringBuilder();
@@ -36,8 +29,10 @@ public class Stemmer {
 		return everything.toString();
 	}
 	
-	public static String stemIt(String line)
+	//remove stop words, remove all punctuation, and convert to lower case
+	public static String cleanit(String line)
 	{
+		line = line.toLowerCase();//convert to lower case
 		line = line.replaceAll("\\p{P}", " ");//punc
 		line = line.replaceAll("\\s+", " ");
 		line = line.replaceAll(" a ", " ");

@@ -6,66 +6,38 @@ public class Splitter {
 	{
 		String filename = args[0];
 		int numLines = Integer.parseInt(args[1]);
-		int quarterNumber = Integer.parseInt(args[2]);
-
-		// Determines the line numbers
-
-		int startingLineNumber = 0;
-		int endingLineNumber = 0;
+		int quarter = Integer.parseInt(args[2]);
 		
-		if (quarterNumber == 1)
-		{
-			startingLineNumber = 1;
-			endingLineNumber = (int) (numLines / 4);
+		//error checking
+		if(quarter <= 0 || quarter > 4) {
+			System.out.println("ERROR: " + quarter + " is not a valid quarter. Please specify a number 1-4"); 
 		}
-		else if(quarterNumber == 2)
-		{
-			startingLineNumber = (int) ((numLines / 4) + 1);
-			endingLineNumber = (int) ((numLines * 2) / 4);
-		}
-		else if(quarterNumber == 3)
-		{
-			startingLineNumber = (int) (((numLines * 2) / 4) + 1);
-			endingLineNumber = (int) ((numLines * 3) / 4);
-		}
-		else if(quarterNumber == 4)
-		{
-			startingLineNumber = (int) (((numLines * 3) / 4) + 1);
-			endingLineNumber = numLines;
-		}
-		else
-		{
-			System.out.println("Invalid Quarter Number");
-		}
+		
+		// determine line numbers
+		double linesPerQuarter = numLines/4.0;
+		int start = (int) Math.ceil((quarter-1)*linesPerQuarter);
+		int end = (int) Math.ceil(quarter*linesPerQuarter);		
 
-
-		// Reads from the file according to the line numbers in the array
-
-		// File is opened and read from here 
-
+		//open file for reading
 		File textFile = new File(filename);
-		
 		BufferedReader buffReaderObj = new BufferedReader(new FileReader(textFile));
 
-		String lineContents = "";
-		String quarterContents = "";
+		String line = "";
+		int idx = 0;
 
-		int numIterations = 0;
-
-		while((lineContents = buffReaderObj.readLine()) != null)
+		while((line = buffReaderObj.readLine()) != null)
 		{
-
-			numIterations += 1;
-
-			if((numIterations >= startingLineNumber) && (numIterations <= endingLineNumber))
-			{
-
-				quarterContents = quarterContents + lineContents + "\n";
-
+			if(idx >= start && idx < end) {
+				//in range; print it!
+				System.out.println(line);
 			}
+			else if( idx >= end) {
+				//we're done; stop reading
+				break;
+			}
+			
+			idx++;
 		}
-
-		System.out.println(quarterContents);
 		
 		//close buffered reader
 		buffReaderObj.close();

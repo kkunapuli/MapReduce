@@ -10,8 +10,10 @@ public class Sender {
 				new BufferedReader(new InputStreamReader(System.in)); 
 		Sender s = new Sender();
 		try {
-			while((reader.readLine()) != null) {
+			String str = new String();
+			while((str = reader.readLine()) != null) {
 				s.startConnection("127.0.0.1",778);
+				s.sendMessage(str);
 				s.stopConnection();
 
 			}

@@ -1,0 +1,8 @@
+alice
+tea
+cake
+queen
+cat
+rabbit
+hatter
+computer
